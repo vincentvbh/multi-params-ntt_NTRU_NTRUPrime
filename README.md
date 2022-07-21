@@ -53,3 +53,40 @@ For each implementation,
 - We used latest version of NTRU and NTRU Prime implementations from [pqm4](https://github.com/mupq/pqm4).
 - We used TMVP based polynomial multiplication from [Faster NTRU on ARM Cortex-M4 with TMVP-based multiplication](https://github.com/iremkp/NTRU-tmvp4-m4) by I. K Paksoy and M. Cenk, when any of the inputs in the polynomial multiplication of NTRU implementations doesn't have restriction that all coefficients should be in {-1, 0, 1}.
 - We used mixed radix NTT based multiplication for some polynomial multiplications needed for Streamlined NTRU Prime implementations from [Number Theoretic Transform for Polynomial Multiplication in Lattice-based Cryptography on ARM Processors.](https://github.com/dean3154/ntrup_m4) by Yun-Li Cheng. 
+
+## Related external code
+Aside from the code in this repository, we also have some programs for generating the tables of twiddle factors and computing the worst-case bounds based on Montgomery reductions and multiplications.
+
+### Generating twiddle factors
+In [gen_table](https://github.com/vincentvbh/NTTs_with_Armv7-M_Armv7E-M_Armv8-A/tree/main/gen_table/Armv7E-M/cortex-m4),
+the following folders generate the tables of twiddle factors in this paper:
+- `ntruhps2048677_1440`
+- `ntruhps2048677_1536`
+- `ntruhps4096821`
+- `ntruhrss701_1440`
+- `ntruhrss701_1536`
+- `ntrup653`
+- `ntrup761`
+- `ntrup857`
+
+### Computing worst-case bounds based on Montgomery reductions and multiplications
+
+In [bound](https://github.com/vincentvbh/NTTs_with_Armv7-M_Armv7E-M_Armv8-A/tree/main/bound/Armv7E-M/cortex-m4),
+the following folders compute the bounds of implementations in this paper:
+- `ntruhps2048677_1440`
+- `ntruhps2048677_1536`
+- `ntruhps4096821`
+- `ntruhrss701_1440`
+- `ntruhrss701_1536`
+- `ntrup653`
+- `ntrup761`
+- `ntrup857`
+
+
+
+
+
+
+
+
+
