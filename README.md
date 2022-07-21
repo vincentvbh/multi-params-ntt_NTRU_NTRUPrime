@@ -13,10 +13,14 @@ For a better compilation performance we recommend compile the code with followin
 make -j8
 ```
 ### Binary files
-After compilation, binary files created under bin directory and can be uploaded to the board with using st-link tools.
+After compilation, binary files are created under bin directory and can be uploaded to the board with using st-link tools as follows:
+```
+st-flash write XXX.bin 0x8000000
+```
+where `XXX.bin` is the produced binary file.
 
 ### How to Read from Board
-To be able to read the output, one needs to connect the boards PA2 and PA3 pins to an usb-ttl serial adapter and run the following command.
+To read the output, one needs to connect the boards PA2 and PA3 pins to an usb-ttl serial adapter and run the following command.
 ```
 python3 ./read_serial.py
 ```
@@ -24,14 +28,14 @@ python3 ./read_serial.py
 Setting is in the file `config.py`.
 
 ### Script for Testing
-To test the correctness of the codes the repository has special python script.
+To test the correctness of the implementations in the repository, one can run the following python script.
 
 ```
 python3 ./test.py
 ```
 
 ### Script for Benchmarking
-To verify cycle counts that reported in the paper, one can use following script.
+To verify cycle counts reported in the paper, one can use following script.
 
 ```
 python3 ./speed.py
@@ -41,18 +45,18 @@ Results will be shown in the command line output for each implementation and the
 
 ## The Structure of the Sources
 
-We have followed pqm4 directory structure to make it easier to adopt. We provided implementation of each parameter sets for each scheme in a separeted directory under the crypto\_kem directory and each convolution in the separeted directories under the schemes directories.
+We follow pqm4 directory structure to make it easier to adopt. We provided implementation of each parameter sets for each scheme in a separeted directory under the `crypto_kem` directory and each convolution in the separeted directories under the schemes directories.
 
 For each implementation, 
- - The prototypes for assembly functions and precomputed tables are given in a header file `NTT.h`, also parameters that are needed by the convolution implementation are given in a separeted header file `NTT_params.h`. 
- - Dedicated butterfly operations, which are explained in Section 4.1 of the paper, implemented in the `special_butterflies.i` and used in `Good_3x2.S` files. 
- - The final map implementations provided in the `final_map.S` files.
+ - The prototypes for assembly functions and precomputed tables are given in a header file `NTT.h`, and the parameters for the convolution implementation are given in a separeted header file `NTT_params.h`.
+ - Dedicated butterfly operations, which are explained in Section 4.1 of the paper, are implemented in the `special_butterflies.i` and used in `Good_3x2.S` files.
+ - The final map implementations are provided in the `final_map.S` files.
 
 ### Imported codes
 
 - We used latest version of NTRU and NTRU Prime implementations from [pqm4](https://github.com/mupq/pqm4).
 - We used TMVP based polynomial multiplication from [Faster NTRU on ARM Cortex-M4 with TMVP-based multiplication](https://github.com/iremkp/NTRU-tmvp4-m4) by I. K Paksoy and M. Cenk, when any of the inputs in the polynomial multiplication of NTRU implementations doesn't have restriction that all coefficients should be in {-1, 0, 1}.
-- We used mixed radix NTT based multiplication for some polynomial multiplications needed for Streamlined NTRU Prime implementations from [Number Theoretic Transform for Polynomial Multiplication in Lattice-based Cryptography on ARM Processors.](https://github.com/dean3154/ntrup_m4) by Yun-Li Cheng. 
+- We used NTT-based multiplication (without changing the coefficient rings) for polynomial multiplications in the key generation of Streamlined NTRU Prime implementations from [Number Theoretic Transform for Polynomial Multiplication in Lattice-based Cryptography on ARM Processors.](https://github.com/dean3154/ntrup_m4) by Yun-Li Cheng.
 
 ## Related external code
 Aside from the code in this repository, we also have some programs for generating the tables of twiddle factors and computing the worst-case bounds based on Montgomery reductions and multiplications.
