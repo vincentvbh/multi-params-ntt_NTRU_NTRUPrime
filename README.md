@@ -58,6 +58,7 @@ For each implementation,
 Aside from the code in this repository, we also have some programs for generating the tables of twiddle factors and computing the worst-case bounds based on Montgomery reductions and multiplications.
 
 ### Generating twiddle factors
+
 In [gen_table](https://github.com/vincentvbh/NTTs_with_Armv7-M_Armv7E-M_Armv8-A/tree/main/gen_table/Armv7E-M/cortex-m4),
 the following folders generate the tables of twiddle factors in this paper:
 - `ntruhps2048677_1440`
@@ -82,7 +83,11 @@ the following folders compute the bounds of implementations in this paper:
 - `ntrup761`
 - `ntrup857`
 
+## Dependencies
 
+- arm-none-eabi-gcc 9.2.1
+- python3
+- libopencm3 commit c78007338e13a927c71385b0d647ba5bfb526bd7
 
 
 
