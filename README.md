@@ -43,6 +43,8 @@ python3 ./speed.py
 
 Results will be shown in the command line output for each implementation and the formatted tables are generated in the file `speed.txt` at the end.
 
+### Summary of the Performance
+
 ## The Structure of the Sources
 
 We follow pqm4 directory structure to make it easier to adopt. We provided implementation of each parameter sets for each scheme in a separeted directory under the `crypto_kem` directory and each convolution in the separeted directories under the schemes directories.
@@ -52,16 +54,16 @@ For each implementation,
  - Dedicated butterfly operations, which are explained in Section 4.1 of the paper, are implemented in the `special_butterflies.i` and used in `Good_3x2.S` files.
  - The final map implementations are provided in the `final_map.S` files.
 
-### Imported codes
+### Imported Code
 
 - We used latest version of NTRU and NTRU Prime implementations from [pqm4](https://github.com/mupq/pqm4).
 - We used TMVP based polynomial multiplication from [Faster NTRU on ARM Cortex-M4 with TMVP-based multiplication](https://github.com/iremkp/NTRU-tmvp4-m4) by I. K Paksoy and M. Cenk, when any of the inputs in the polynomial multiplication of NTRU implementations doesn't have restriction that all coefficients should be in {-1, 0, 1}.
-- We used NTT-based multiplication (without changing the coefficient rings) for polynomial multiplications in the key generation of Streamlined NTRU Prime implementations from [Number Theoretic Transform for Polynomial Multiplication in Lattice-based Cryptography on ARM Processors.](https://github.com/dean3154/ntrup_m4) by Yun-Li Cheng.
+- We used NTT-based multiplication (without changing the coefficient rings) for polynomial multiplications in the key generation of Streamlined NTRU Prime implementations from [Number Theoretic Transform for Polynomial Multiplication in Lattice-based Cryptography on ARM Processors](https://github.com/dean3154/ntrup_m4) by Yun-Li Cheng.
 
-## Related external code
-Aside from the code in this repository, we also have some programs for generating the tables of twiddle factors and computing the worst-case bounds based on Montgomery reductions and multiplications.
+## Related External Code
+We also have some programs for generating the tables of twiddle factors and computing the worst-case bounds based on Montgomery reductions and multiplications.
 
-### Generating twiddle factors
+### Generating Twiddle Factors
 
 In [gen_table](https://github.com/vincentvbh/NTTs_with_Armv7-M_Armv7E-M_Armv8-A/tree/main/gen_table/Armv7E-M/cortex-m4),
 the following folders generate the tables of twiddle factors in this paper:
@@ -74,10 +76,10 @@ the following folders generate the tables of twiddle factors in this paper:
 - `ntrup761`
 - `ntrup857`
 
-### Computing worst-case bounds based on Montgomery reductions and multiplications
+### Computing Worst-Case Bounds
 
 In [bound](https://github.com/vincentvbh/NTTs_with_Armv7-M_Armv7E-M_Armv8-A/tree/main/bound/Armv7E-M/cortex-m4),
-the following folders compute the bounds of implementations in this paper:
+the following folders compute the bounds (based on Montgomery reductions and multiplications) of implementations in this paper:
 - `ntruhps2048677_1440`
 - `ntruhps2048677_1536`
 - `ntruhps4096821`
@@ -93,12 +95,7 @@ the following folders compute the bounds of implementations in this paper:
     - `pyserial`
     - `numpy`
 - stlink
-- arm-none-eabi-gcc 9.2.1
+- arm-none-eabi-gcc 9.2.1 or later (we also tested with 10.3.1)
 - libopencm3 commit c78007338e13a927c71385b0d647ba5bfb526bd7
-
-
-
-
-
 
 

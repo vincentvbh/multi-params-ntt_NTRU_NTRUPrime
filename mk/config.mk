@@ -1,4 +1,7 @@
 
+# stripped from https://github.com/mupq/mupq/blob/master/mk/config.mk with
+# PLATFORM ?= stm32f4discovery
+
 CPPFLAGS += -DPQM4
 
 ifndef _CONFIG
@@ -32,14 +35,10 @@ hashprofobjs = $(addprefix obj/hashprof/,$(addsuffix .o,$(1)))
 
 Q ?= @
 
-PLATFORM=stm32f4discovery
-
-ifeq (,$(PLATFORM))
-$(error No PLATFORM specified (see README.md for a list of supported platforms)!)
-endif
+PLATFORM ?= stm32f4discovery
 
 ifeq (,$(wildcard $(SRCDIR)/mk/$(PLATFORM).mk))
-$(error Unknown platform!)
+$(error The default platform is the stm32f4discovery board. You call the scripts without providing a linker. Pleas add a linker under the folder /mk.)
 endif
 
 # The platform file should set all necessary CC/CXX/AR/LD variables
@@ -59,7 +58,6 @@ CFLAGS += \
 	-std=gnu99 \
 	--sysroot=$(SYSROOT) \
 	-I$(SRCDIR)/common \
-# 	-I$(SRCDIR)/mupq/common
 
 DEBUG ?=
 OPT_SIZE ?=

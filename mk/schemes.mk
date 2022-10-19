@@ -1,4 +1,6 @@
 
+# stripped from https://github.com/mupq/mupq/blob/master/mk/schemes.mk with
+# a predefined IMPLEMENTATION_PATH
 
 IMPLEMENTATION_PATH = \
 	crypto_kem/ntruhps2048677/m4f_1440 \
