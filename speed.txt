@@ -1,0 +1,56 @@
+speed measurements written on 2022-10-19 08:22:22.577128+00:00; iterations=10
+
+
+          Cycle counts for high level operations.           
+
+
+Scheme                       	    keygen	    encaps	    decaps	
+ntruhps2048677m4f_1440        	     3908k	      524k	      718k	
+ntruhps2048677m4f_1440_168MHz 	     4669k	      594k	      762k	
+ntruhps2048677m4f_1536        	     3936k	      532k	      733k	
+ntruhps2048677m4f_1536_168MHz 	     4691k	      601k	      776k	
+ntruhrss701m4f_1440           	     3818k	      361k	      777k	
+ntruhrss701m4f_1440_168MHz    	     4559k	      394k	      823k	
+ntruhrss701m4f_1536           	     3844k	      368k	      793k	
+ntruhrss701m4f_1536_168MHz    	     4585k	      401k	      837k	
+ntruhps4096821m4f             	     5229k	      654k	      901k	
+ntruhps4096821m4f_168MHz      	     6237k	      739k	      955k	
+ntrulpr653m4f                 	      669k	     1132k	     1232k	
+ntrulpr653m4f_168MHz          	      749k	     1277k	     1364k	
+ntrulpr761m4f                 	      710k	     1267k	     1365k	
+ntrulpr761m4f_168MHz          	      841k	     1428k	     1509k	
+ntrulpr857m4f                 	      886k	     1465k	     1596k	
+ntrulpr857m4f_168MHz          	      988k	     1647k	     1760k	
+sntrup653m4f                  	     6746k	      621k	      527k	
+sntrup653m4f_168MHz           	     8037k	      689k	      583k	
+sntrup761m4f                  	     7941k	      667k	      563k	
+sntrup761m4f_168MHz           	     9440k	      786k	      620k	
+sntrup857m4f                  	    10194k	      812k	      686k	
+sntrup857m4f_168MHz           	    12492k	      895k	      755k	
+
+               Performance of polymuls in NTRU and NTRU Prime on Cortex-M4.               
+
+
+Scheme                       	       NTT	 NTT_small	   basemul	      iNTT	 final_map	   polymul
+ntruhps2048677m4f_1440        	     34225	     33427	     27686	     36754	      8925	    141017
+ntruhps2048677m4f_1440_168MHz 	     35082	     34225	     27800	     37199	      9268	    143574
+ntruhps2048677m4f_1536        	     37841	     36987	     23317	     41433	      8667	    148245
+ntruhps2048677m4f_1536_168MHz 	     38343	     37484	     23483	     41996	      8881	    150187
+ntruhrss701m4f_1440           	     34224	     33427	     27687	     36758	      9122	    141218
+ntruhrss701m4f_1440_168MHz    	     35071	     34244	     27808	     37197	      9548	    143868
+ntruhrss701m4f_1536           	     37840	     36987	     23320	     41433	      9123	    148703
+ntruhrss701m4f_1536_168MHz    	     38345	     37491	     23493	     41991	      9394	    150714
+ntruhps4096821m4f             	     48774	     47818	     21846	     53319	     10512	    182269
+ntruhps4096821m4f_168MHz      	     49594	     48672	     22324	     55537	     10557	    186684
+ntrulpr653m4f                 	     34224	     33426	     27685	     36754	     10918	    143007
+ntrulpr653m4f_168MHz          	     35099	     34257	     27808	     37195	     12808	    147167
+ntrulpr761m4f                 	     37510	     36656	     23317	     41435	     12902	    151820
+ntrulpr761m4f_168MHz          	     38091	     37223	     23478	     41986	     13034	    153812
+ntrulpr857m4f                 	     48771	     47818	     21846	     53319	     13694	    185448
+ntrulpr857m4f_168MHz          	     49610	     48683	     22335	     54837	     13741	    189206
+sntrup653m4f                  	     34224	     33427	     27687	     36754	     10919	    143011
+sntrup653m4f_168MHz           	     35074	     34254	     27803	     37204	     12776	    147111
+sntrup761m4f                  	     37510	     36656	     23317	     41435	     12902	    151820
+sntrup761m4f_168MHz           	     38096	     37229	     23478	     41994	     13020	    153817
+sntrup857m4f                  	     48770	     47817	     21844	     53318	     13693	    185442
+sntrup857m4f_168MHz           	     49609	     48668	     22331	     55523	     13739	    189870

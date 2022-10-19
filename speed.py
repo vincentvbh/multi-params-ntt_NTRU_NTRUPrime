@@ -23,6 +23,7 @@ testedList = [["keygen", "keypair cycles:"],
               ["iNTT", "iNTT cycles:"],
               ["final_map","final_map cycles:"]
              ]
+# schemeList = ["ntruhps2048677", "sntrup857"]
 schemeList = ["ntruhps2048677", "ntruhrss701", "ntruhps4096821",
               "ntrulpr653", "ntrulpr761", "ntrulpr857",
               "sntrup653", "sntrup761", "sntrup857"]
@@ -41,7 +42,7 @@ def getBinary(scheme, impl,benchType):
     return f"bin/crypto_kem_{scheme}_{impl}_{benchType}.bin"
 
 def getFlash(binary):
-    return f"st-flash write {binary} 0x8000000"
+    return f"st-flash --reset write {binary} 0x8000000"
 
 def run_bench(scheme, impl, benchType):
     binary = getBinary(scheme, impl, benchType)
@@ -121,7 +122,7 @@ def bench(scheme, texName, impl, benchType, ignoreErrors=False):
         except:
             breakpoint()
             print("parsing log failed -> retry")
-            return bench(scheme, texName, impl, outfile)
+            return bench(scheme, texName, impl, benchType)
         results.append(result)
 
     avgResults = average(results)
@@ -151,7 +152,7 @@ with open(outFileName, "w+") as outfile:
         for imple in impleList:
             for benchType in benchTypes:
                 bench(scheme, scheme + cpu + imple, cpu + imple, benchType)
-    print("\n"+"Cycle counts for high leveloperations.".center(60, ' ')+"\n",file=outfile)
+    print("\n"+"Cycle counts for high level operations.".center(60, ' ')+"\n",file=outfile)
     print("\nScheme".ljust(30,' '),end='\t',file=outfile)   
     for op in testedList[0:3]:
         print(f"{op[0]}".rjust(10,' '),end='\t',file=outfile)

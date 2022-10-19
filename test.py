@@ -24,7 +24,7 @@ def getBinary(scheme, impl):
     return f"bin/crypto_kem_{scheme}_{impl}_{testType}.bin"
 
 def getFlash(binary):
-    return f"st-flash write {binary} 0x8000000"
+    return f"st-flash --reset write {binary} 0x8000000"
 
 def makeAll():
     subprocess.check_call(f"make clean", shell=True)
