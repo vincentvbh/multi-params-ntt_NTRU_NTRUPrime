@@ -69,6 +69,7 @@ makeAll()
 
 with open(outFileName, "w+") as outfile:
 
+    now = datetime.datetime.now(datetime.timezone.utc)
     print(f"test logs written on {now}; iterations={iterations}\n\n", file=outfile)
 
     print("Scheme".ljust(32,' ') + "#ERROR".rjust(10, ' ') + "#OK".rjust(10, " "),file=outfile)

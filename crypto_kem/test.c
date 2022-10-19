@@ -5,8 +5,6 @@
 
 #include <string.h>
 
-#define NTESTS 10
-
 const uint8_t canary[8] = {
     0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF
 };
@@ -45,7 +43,7 @@ static int test_keys(void){
 
     int i;
 
-    for(i = 0; i < NTESTS; i++){
+    for(i = 0; i < ITERATIONS; i++){
 
         //Alice generates a public key
         crypto_kem_keypair(pk+8, sk_a+8);
