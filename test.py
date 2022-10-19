@@ -13,7 +13,6 @@ testType = "test"
 iterations = 1
 ntests = 10
 
-# schemeList = ["ntrulpr857"]
 schemeList = ["ntruhps2048677", "ntruhrss701", "ntruhps4096821",
               "ntrulpr653", "ntrulpr761", "ntrulpr857",
               "sntrup653", "sntrup761", "sntrup857"]

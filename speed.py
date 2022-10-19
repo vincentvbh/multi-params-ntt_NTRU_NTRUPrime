@@ -56,7 +56,7 @@ def run_bench(scheme, impl, benchType):
         subprocess.check_call(getFlash(binary), shell=True)
     except:
         print("st-flash failed --> retry")
-        return run_bench(scheme, impl)
+        return run_bench(scheme, impl, benchType)
 
     # get serial output and wait for '#'
     with serial.Serial(Settings.SERIAL_DEVICE, Settings.BAUD_RATE, timeout=10) as dev:
@@ -67,7 +67,7 @@ def run_bench(scheme, impl, benchType):
             device_output = dev.read()
             if device_output == b'':
                 print("timeout --> retry")
-                return run_bench(scheme, impl)
+                return run_bench(scheme, impl, benchType)
             sys.stdout.buffer.write(device_output)
             sys.stdout.flush()
             log += device_output
@@ -174,3 +174,4 @@ with open(outFileName, "w+") as outfile:
         for v in value:
             print(toLog(key,v).rjust(10,' '),end='\t',file=outfile)
         print(str(sum(value)).rjust(10,' '), file=outfile, flush=True)
+
