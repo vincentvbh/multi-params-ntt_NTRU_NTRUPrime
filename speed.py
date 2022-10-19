@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
 import datetime
+import os.path
 import subprocess
 import sys
-
 import serial
+
 import numpy as np
-import os.path
+
 from config import Settings
 
 hbench={}

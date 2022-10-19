@@ -89,11 +89,11 @@ the following folders compute the bounds of implementations in this paper:
 
 ## Dependencies
 
-- stlink
-- arm-none-eabi-gcc 9.2.1
-- python3
+- python3, including the following modules:
     - `pyserial`
     - `numpy`
+- stlink
+- arm-none-eabi-gcc 9.2.1
 - libopencm3 commit c78007338e13a927c71385b0d647ba5bfb526bd7
 
 
