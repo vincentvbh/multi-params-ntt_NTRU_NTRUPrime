@@ -13,6 +13,5 @@ clean: libclean
 	rm -rf bin/
 	rm -rf obj/
 	rm -rf benchmarks/
-	rm -f speed.txt
 
 .SECONDARY:

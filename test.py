@@ -12,6 +12,7 @@ from config import Settings
 testType = "test"
 iterations = 1
 ntests = 10
+outFileName = "test.txt"
 
 schemeList = ["ntruhps2048677", "ntruhrss701", "ntruhps4096821",
               "ntrulpr653", "ntrulpr761", "ntrulpr857",
@@ -31,7 +32,7 @@ def makeAll():
     subprocess.check_call(f"make -j8 ITERATIONS={iterations}", shell=True)
 
 
-def test(scheme, impl):
+def test(scheme, impl, outfile):
     binary = getBinary(scheme, impl)
 
     if os.path.isfile(binary):
@@ -44,7 +45,7 @@ def test(scheme, impl):
         subprocess.check_call(getFlash(binary), shell=True)
     except:
         print("st-flash failed --> retry")
-        return test(scheme, impl)
+        return test(scheme, impl, outfile)
 
     with serial.Serial(Settings.SERIAL_DEVICE, Settings.BAUD_RATE, timeout=10) as dev:
         log = b""
@@ -53,7 +54,7 @@ def test(scheme, impl):
             device_output = dev.read()
             if device_output == b'':
                 print("timeout --> retry")
-                return test(scheme, impl)
+                return test(scheme, impl, outfile)
             sys.stdout.buffer.write(device_output)
             sys.stdout.flush()
             log += device_output
@@ -61,13 +62,21 @@ def test(scheme, impl):
                 break
 
     log = log.decode(errors="ignore")
-    assert log.count("ERROR") == 0 and log.count("OK") == ntests
-
+    print(f"{scheme}_{impl}".ljust(30, ' '), end = '\t', file = outfile)
+    print(str(log.count("ERROR")).rjust(10, ' ') + str(log.count("OK")).rjust(10, ' '), file = outfile, flush = True)
 
 makeAll()
 
-for scheme in schemeList:
-    for imple in impleList:
-        test(scheme, cpu + imple)
+with open(outFileName, "w+") as outfile:
+
+    print(f"test logs written on {now}; iterations={iterations}\n\n", file=outfile)
+
+    print("Scheme".ljust(32,' ') + "#ERROR".rjust(10, ' ') + "#OK".rjust(10, " "),file=outfile)
+
+    for scheme in schemeList:
+        for imple in impleList:
+            test(scheme, cpu + imple, outfile)
+
+
 
 
