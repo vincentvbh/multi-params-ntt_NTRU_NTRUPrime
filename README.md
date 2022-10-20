@@ -43,7 +43,7 @@ python3 ./speed.py
 
 Results will be shown in the command line output for each implementation and the formatted tables are generated in the file `speed.txt` at the end.
 
-### Summary of the Performance
+### Summary of Overall Performance
 
 | scheme | implementation | key generation [cycles] | encapsulation [cycles] | decapsulation [cycles] |
 | ------ | -------------- | ----------------------- | ---------------------- | ---------------------- |
