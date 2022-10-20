@@ -38,9 +38,14 @@ For each implementation,
 
 ### Imported Code
 
-- We used latest version of NTRU and NTRU Prime implementations from [pqm4](https://github.com/mupq/pqm4).
-- We used TMVP-based polynomial multiplication from [Faster NTRU on ARM Cortex-M4 with TMVP-based multiplication](https://github.com/iremkp/NTRU-tmvp4-m4) by \'{I}rem Keskinkurt Paksoy and Murak Cenk, when any of the inputs in the polynomial multiplication of NTRU implementations doesn't have restriction that all coefficients should be in {-1, 0, 1}.
-- We used NTT-based multiplication (without changing the coefficient rings) for polynomial multiplications in the key generation of Streamlined NTRU Prime implementations from [Number Theoretic Transform for Polynomial Multiplication in Lattice-based Cryptography on ARM Processors](https://github.com/dean3154/ntrup_m4) by Yun-Li Cheng.
+We used latest version of NTRU and NTRU Prime implementations from [pqm4](https://github.com/mupq/pqm4).
+- We used TMVP-based polynomial multiplication from [Faster NTRU on ARM Cortex-M4 with TMVP-based multiplication](https://github.com/iremkp/NTRU-tmvp4-m4) by \'{I}rem Keskinkurt Paksoy and Murak Cenk, when any of the inputs in the polynomial multiplication of NTRU implementations doesn't have restriction that all coefficients should be in {-1, 0, 1}. In particular,
+    - `tmvp4_677_10.S`
+    - `tmvp4_821_12.S`
+    - `tmvp4_701_10.S`
+- We used NTT-based multiplication (without changing the coefficient rings) for polynomial multiplications in the key generation of Streamlined NTRU Prime implementations from [Number Theoretic Transform for Polynomial Multiplication in Lattice-based Cryptography on ARM Processors](https://github.com/dean3154/ntrup_m4) by Yun-Li Cheng. Please refer to the thesis for more details.
+- We used polynomial inversions for the key generations of `ntruhps`, `ntruhrss`, and `sntrup` from [Implementation of Polynomial Modular Inversion in Lattice- based cryptography on ARM](https://github.com/trista5658321/polyinv-m4) by Ching-Lin Li. Please refer to the thesis for more details.
+
 
 ## Running tests
 
@@ -91,10 +96,11 @@ python3 ./speed.py
 
 Results will be shown in the command line output for each implementation and the formatted tables are generated in the file `speed.txt` at the end.
 For the overall performance, implementations without the suffix `_168MHz` are reported in our paper and summarized in the beginning of this `README`.
-The implementations with suffix `168MHz` are reported for completeness, but it is known that some parts of the programs (that are not programs from this paper) are not optimized for code size and incur non-negligible performance penalties while running the the full speed 168MHz.
+The implementations with suffix `168MHz` are reported for completeness, but it is known that some parts of the programs (that are not programs from this paper) are not optimized for code size and incur non-negligible performance penalties while running at the full speed 168MHz.
 For the performance of NTT-based polynomial multiplications, we report the numbers at both 24MHz and 168MHz.
 
-## Licenses
+## Licences
+- `libopencm3`: GPL version 3, see https://github.com/libopencm3/libopencm3 for details.
 
 ## Related External Code
 We also have some programs for generating the tables of twiddle factors and computing the worst-case bounds based on Montgomery reductions and multiplications.
