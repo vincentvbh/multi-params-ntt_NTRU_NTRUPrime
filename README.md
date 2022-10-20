@@ -45,6 +45,18 @@ Results will be shown in the command line output for each implementation and the
 
 ### Summary of the Performance
 
+| scheme | implementation | key generation [cycles] | encapsulation [cycles] | decapsulation [cycles] |
+| ------ | -------------- | ----------------------- | ---------------------- | ---------------------- |
+| ntruhps2048677| m4f_1440 |  3,912k |   525k |   718k |
+| ntruhrss701   | m4f_1440 |  3,822k |   361k |   778k |
+| ntruhps4096821|      m4f |  5,217k |   654k |   908k |
+| ntrulpr653    |      m4f |    669k | 1,131k | 1,231k |
+| ntrulpr761    |      m4f |    710k | 1,266k | 1,365k |
+| ntrulpr857    |      m4f |    886k | 1,465k | 1,596k |
+| sntrup653     |      m4f |  6,623k |   621k |   527k |
+| sntrup761     |      m4f |  7,937k |   666k |   563k |
+| sntrup857     |      m4f | 10,192k |   812k |   685k |
+
 ## The Structure of the Sources
 
 We follow pqm4 directory structure to make it easier to adopt. We provided implementation of each parameter sets for each scheme in a separeted directory under the `crypto_kem` directory and each convolution in the separeted directories under the schemes directories.

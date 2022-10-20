@@ -163,17 +163,23 @@ with open(outFileName, "w+") as outfile:
         print(key.ljust(30,' '),end='\t',file=outfile)
         for v in value:
             print(toLog(key,v).rjust(10,' '),end='\t',file=outfile)
-        print('', file=outfile, flush=True)
+        print("", file=outfile, flush=True)
     
     print("\n"+"Performance of polymuls in NTRU and NTRU Prime on Cortex-M4.".center(90, ' ')+"\n",file=outfile)  
     print("\nScheme".ljust(30,' '),end='\t',file=outfile)   
+    print('polymul'.rjust(10,' '), end = '\t', file=outfile)
     for op in testedList[3:]:
         print(f"{op[0]}".rjust(10,' '),end='\t',file=outfile)
-    print('polymul'.rjust(10,' '), file=outfile, flush=True)
+    print("", file = outfile, flush = True)
 
     for key, value in polybench.items():
         print(key.ljust(30,' '),end='\t',file=outfile)
+        print(str(sum(value)).rjust(10,' '), end = '\t', file=outfile, flush=True)
         for v in value:
             print(toLog(key,v).rjust(10,' '),end='\t',file=outfile)
-        print(str(sum(value)).rjust(10,' '), file=outfile, flush=True)
+        print("", file = outfile, flush = True)
+
+
+
+
 
