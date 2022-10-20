@@ -100,7 +100,7 @@ The implementations with suffix `168MHz` are reported for completeness, but it i
 For the performance of NTT-based polynomial multiplications, we report the numbers at both 24MHz and 168MHz.
 
 ## Licences
-- `libopencm3`: GPL version 3, see https://github.com/libopencm3/libopencm3 for details.
+Please refer to `LICENSE.md` for details.
 
 ## Related External Code
 We also have some programs for generating the tables of twiddle factors and computing the worst-case bounds based on Montgomery reductions and multiplications.
