@@ -25,10 +25,9 @@ It is stripped from Tables 9 and 10 in our paper.
 
 We follow pqm4 directory structure to make it easier to adopt.
 - `common` contains the common functions.
-- `crypto_kem` contains our implementations.
+- `crypto_kem` contains our implementations. We provided implementations of each parameter sets for each scheme in a separeted directory under the `crypto_kem` directory.
 - `mk` contains the relevant makefiles stripped from [pqm4](https://github.com/mupq/pqm4) and [mupq](https://github.com/mupq/mupq).
 - `ldscripts` contains the linker for our board.
-We provided implementations of each parameter sets for each scheme in a separeted directory under the `crypto_kem` directory.
 
 We focus on the NTT-based polynomial multiplications.
 For each implementation,
@@ -39,7 +38,7 @@ For each implementation,
 ### Imported Code
 
 We used latest version of NTRU and NTRU Prime implementations from [pqm4](https://github.com/mupq/pqm4).
-- We used TMVP-based polynomial multiplication from [Faster NTRU on ARM Cortex-M4 with TMVP-based multiplication](https://github.com/iremkp/NTRU-tmvp4-m4) by \'{I}rem Keskinkurt Paksoy and Murak Cenk, when any of the inputs in the polynomial multiplication of NTRU implementations doesn't have restriction that all coefficients should be in {-1, 0, 1}. In particular,
+- We used TMVP-based polynomial multiplication from [Faster NTRU on ARM Cortex-M4 with TMVP-based multiplication](https://github.com/iremkp/NTRU-tmvp4-m4) by Irem Keskinkurt Paksoy and Murak Cenk when any of the inputs in the polynomial multiplication of NTRU implementations doesn't have restriction that all coefficients should be in {-1, 0, 1}. In particular,
     - `tmvp4_677_10.S`
     - `tmvp4_821_12.S`
     - `tmvp4_701_10.S`
