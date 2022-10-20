@@ -2,9 +2,12 @@
 
 This repository accompanies our paper [Multi-Parameter Support with NTTs for NTRU and NTRU Prime on Cortex-M4](https://tches.iacr.org/index.php/TCHES/article/view/9823)
 published at TCHES 2022.
-You can find the talk [here](https://youtu.be/TSUtA5hmrtk?t=2825) and an updated version [here].
+You can find the talk [here](https://youtu.be/TSUtA5hmrtk?t=2825) and an updated version [here](https://vincentvbh.github.io/papers/2022-930.pdf).
 
 ## Summary of Overall Performance
+
+The following table summarizes the overall performance of NTRU and NTRU Prime of our work.
+It is stripped from Tables 9 and 10 in our paper.
 
 | scheme | implementation | key generation [cycles] | encapsulation [cycles] | decapsulation [cycles] |
 | ------ | -------------- | ----------------------- | ---------------------- | ---------------------- |
@@ -87,7 +90,11 @@ python3 ./speed.py
 ```
 
 Results will be shown in the command line output for each implementation and the formatted tables are generated in the file `speed.txt` at the end.
+For the overall performance, implementations without the suffix `_168MHz` are reported in our paper and summarized in the beginning of this `README`.
+The implementations with suffix `168MHz` are reported for completeness, but it is known that some parts of the programs (that are not programs from this paper) are not optimized for code size and incur non-negligible performance penalties while running the the full speed 168MHz.
+For the performance of NTT-based polynomial multiplications, we report the numbers at both 24MHz and 168MHz.
 
+## Licenses
 
 ## Related External Code
 We also have some programs for generating the tables of twiddle factors and computing the worst-case bounds based on Montgomery reductions and multiplications.

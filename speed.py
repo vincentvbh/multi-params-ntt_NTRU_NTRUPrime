@@ -154,7 +154,7 @@ with open(outFileName, "w+") as outfile:
             for benchType in benchTypes:
                 bench(scheme, scheme + cpu + imple, cpu + imple, benchType)
     print("\n"+"Cycle counts for high level operations.".center(60, ' ')+"\n",file=outfile)
-    print("\nScheme".ljust(30,' '),end='\t',file=outfile)   
+    print("\nImplementation".ljust(30,' '),end='\t',file=outfile)
     for op in testedList[0:3]:
         print(f"{op[0]}".rjust(10,' '),end='\t',file=outfile)
     print('', file=outfile, flush=True)
@@ -166,7 +166,7 @@ with open(outFileName, "w+") as outfile:
         print("", file=outfile, flush=True)
     
     print("\n"+"Performance of polymuls in NTRU and NTRU Prime on Cortex-M4.".center(90, ' ')+"\n",file=outfile)  
-    print("\nScheme".ljust(30,' '),end='\t',file=outfile)   
+    print("\nImplementation".ljust(30,' '),end='\t',file=outfile)
     print('polymul'.rjust(10,' '), end = '\t', file=outfile)
     for op in testedList[3:]:
         print(f"{op[0]}".rjust(10,' '),end='\t',file=outfile)
